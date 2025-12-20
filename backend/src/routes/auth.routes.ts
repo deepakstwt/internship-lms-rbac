@@ -88,7 +88,7 @@ router.post('/register', async (req: Request, res: Response) => {
       role: newUser.role as 'student',
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       status: 'success',
       message: 'User registered successfully',
       data: {
@@ -102,7 +102,7 @@ router.post('/register', async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error('Registration error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       status: 'error',
       message: 'Internal server error',
     });
@@ -156,7 +156,7 @@ router.post('/login', async (req: Request, res: Response) => {
       role: user.role as 'student' | 'mentor' | 'admin',
     });
 
-    res.json({
+    return res.json({
       status: 'success',
       message: 'Login successful',
       data: {
@@ -170,7 +170,7 @@ router.post('/login', async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       status: 'error',
       message: 'Internal server error',
     });

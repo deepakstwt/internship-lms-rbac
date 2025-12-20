@@ -158,11 +158,41 @@ cd frontend && npm run dev
 
 3. Open `http://localhost:5173` in browser
 
+## Testing
+
+Backend tests are located in `backend/tests/` and cover:
+
+- Authentication & RBAC enforcement
+- Sequential chapter completion logic
+- Certificate eligibility validation
+
+Run tests:
+```bash
+cd backend
+npm install
+npm test
+```
+
 ## Test Credentials
 
 Create users in Supabase or use:
 - Register as student via `/register`
 - Create mentor/admin directly in database with hashed password
+
+## My AI Usage
+
+**AI Tools Used:**
+- GitHub Copilot (for code autocomplete)
+- ChatGPT (for clarifying TypeScript type errors, Jest mocking patterns, and TDD concepts)
+
+**How AI Was Used:**
+- **Minimal assistance** with TypeScript type definitions and error resolution
+- **Code review** for Jest test setup, Supabase mocking patterns, and TDD approach
+- **Documentation** help with README structure
+- **Learning** TDD best practices and test structure
+
+**Reflection:**
+AI was used sparingly, primarily as a learning tool to understand TypeScript type system, Jest testing patterns, and TDD methodology. The core business logic, RBAC implementation, database schema design, and API architecture were developed independently. AI helped accelerate debugging, understanding testing frameworks, and learning TDD concepts, but all design decisions and implementation were made manually.
 
 ## License
 
