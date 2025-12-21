@@ -173,6 +173,48 @@ npm install
 npm test
 ```
 
+## Deployment
+
+### Backend (Render)
+
+1. Create account at https://render.com
+2. Create new **Web Service**
+3. Connect GitHub repository
+4. Configure:
+   - **Name**: `internship-lms-backend`
+   - **Environment**: `Node`
+   - **Build Command**: `cd backend && npm install && npm run build`
+   - **Start Command**: `cd backend && npm start`
+   - **Root Directory**: (leave empty)
+5. Add Environment Variables:
+   ```
+   PORT=10000
+   FRONTEND_URL=https://your-vercel-app.vercel.app
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+   JWT_SECRET=your_jwt_secret
+   NODE_ENV=production
+   ```
+6. Deploy
+
+### Frontend (Vercel)
+
+1. Create account at https://vercel.com
+2. Create new **Project**
+3. Connect GitHub repository
+4. Configure:
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+5. Add Environment Variable:
+   ```
+   VITE_API_URL=https://your-render-backend.onrender.com
+   ```
+6. Deploy
+
+**Important**: After deployment, update `FRONTEND_URL` in Render with your Vercel URL.
+
 ## Test Credentials
 
 Create users in Supabase or use:

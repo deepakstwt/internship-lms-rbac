@@ -21,9 +21,9 @@ const getApiBaseUrl = () => {
     return import.meta.env.VITE_API_URL;
   }
   if (import.meta.env.DEV) {
-    return '/api';
+    return 'http://localhost:3000';
   }
-  return '/api';
+  return 'http://localhost:3000';
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

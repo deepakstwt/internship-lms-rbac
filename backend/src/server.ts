@@ -18,13 +18,9 @@ const allowedOrigins = process.env.FRONTEND_URL
   ? process.env.FRONTEND_URL.split(',').map(url => url.trim())
   : ['http://localhost:5173'];
 
-const isVercel = process.env.VERCEL === '1';
-
 app.use(cors({
   origin: (origin, callback) => {
-    if (isVercel) {
-      callback(null, true);
-    } else if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else if (process.env.NODE_ENV === 'development') {
       callback(null, true);
