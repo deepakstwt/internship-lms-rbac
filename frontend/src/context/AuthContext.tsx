@@ -16,10 +16,20 @@ interface AuthContextType {
   isAuthenticated: boolean;
 }
 
+const getApiBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  if (import.meta.env.DEV) {
+    return '/api';
+  }
+  return '/api';
+};
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const authApi = axios.create({
-  baseURL: '',
+  baseURL: getApiBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
   },
