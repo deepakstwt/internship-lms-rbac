@@ -22,10 +22,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (error: any) {
     console.error('Serverless function error:', error);
     console.error('Error stack:', error?.stack);
+    console.error('Error message:', error?.message);
+    
+    const errorMessage = error?.message || String(error);
+    const isEnvError = errorMessage.includes('Missing') || errorMessage.includes('environment');
+    
     res.status(500).json({
       status: 'error',
       message: 'Internal server error',
-      error: process.env.NODE_ENV === 'development' ? String(error) : undefined,
+      error: isEnvError ? errorMessage : (process.env.VERCEL_ENV === 'development' ? errorMessage : undefined),
     });
   }
 }
