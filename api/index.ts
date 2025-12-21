@@ -5,7 +5,7 @@ let appInstance: any = null;
 async function getApp() {
   if (!appInstance) {
     try {
-      const serverModule = await import('../backend/src/server');
+      const serverModule = await import('../backend/dist/server');
       appInstance = serverModule.default;
     } catch (error) {
       console.error('Failed to import server:', error);
