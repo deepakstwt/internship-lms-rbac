@@ -1,13 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "cd backend && npm install && npm run build",
   "builds": [
     {
       "src": "api/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["backend/dist/**"]
-      }
+      "use": "@vercel/node"
     },
     {
       "src": "frontend/package.json",
